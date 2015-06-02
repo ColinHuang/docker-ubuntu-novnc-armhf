@@ -1,16 +1,14 @@
 #!/bin/bash
 
-mkdir /var/run/sshd
+mkdir -p /var/run/sshd
 
 # create an ubuntu user
-PASS=`pwgen -c -n -1 10`
+# PASS=`pwgen -c -n -1 10`
 PASS=ubuntu
-echo "User: ubuntu Pass: $PASS"
-useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu
+# echo "Username: ubuntu Password: $PASS"
+id -u ubuntu &>/dev/null || useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu
 echo "ubuntu:$PASS" | chpasswd
 
-/usr/bin/supervisord -c /supervisord.conf
-
-while [ 1 ]; do
-    /bin/bash
-done
+cd /web && ./run.py > /var/log/web.log 2>&1 &
+nginx -c /etc/nginx/nginx.conf
+/usr/bin/supervisord -n
