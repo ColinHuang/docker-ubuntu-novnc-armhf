@@ -1,3 +1,6 @@
+[![Docker Pulls](https://img.shields.io/docker/pulls/colinhuang/ubuntu-novnc-armhf.svg)](https://hub.docker.com/r/colinhuang/ubuntu-novnc-armhf/)
+[![aaa](https://badge.imagelayers.io/colinhuang/ubuntu-novnc-armhf.svg)](https://imagelayers.io/?images=colinhuang/ubuntu-novnc-armhf:latest)
+
 ## Ubuntu with noVNC for armhf architecture
 
 noVNC is a HTML5 VNC client that runs well in any modern browser including mobile browsers. 
